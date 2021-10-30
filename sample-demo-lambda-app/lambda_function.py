@@ -72,3 +72,17 @@ def list_sns(region, creds, sns_topics=[]):
 def process():
     for region, creds in jobs["auth_config"]:
         arns = list_sns(region, creds)
+        
+def read_lines(file):
+    lines = []
+    f = open(file, ‘r’)
+    for line in f:
+        lines.append(line.strip(‘\n’).strip(‘\r\n’))
+    return lines
+    
+def execute(cmd):
+    try:
+        retcode = subprocess.call(cmd, shell=True)
+        ...
+    except OSError as e:
+        ...
