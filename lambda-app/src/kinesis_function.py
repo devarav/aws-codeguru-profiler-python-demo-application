@@ -1,5 +1,7 @@
 import boto3
 import subprocess
+import numpy as np
+import pandas as pd
 
 successes = 0
 

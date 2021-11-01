@@ -1,6 +1,8 @@
 import boto3
 import logging
 import os
+import numpy as np
+import pandas as pd
 
 from random import randrange
 from urllib.request import urlopen
