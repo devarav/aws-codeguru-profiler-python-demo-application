@@ -2,10 +2,24 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: Python file including external library
 Resources:
- SampleFunction:
+ KinesisFunction:
   Type: AWS::Serverless::Function
   Properties:
-   Handler: kinesis.lambda_handler
+   Handler: kinesis_function.lambda_handler
    Runtime: python3.7
-   FunctionName: CodeGuruPython
-   CodeUri: ./src #Directory the source file is
+   FunctionName: kinesis_function
+   CodeUri: ./src/kinesis_function.py #Directory the source file is
+    KinesisFunction:
+  Type: AWS::Serverless::Function
+  Properties:
+   Handler: lambda_function.lambda_handler
+   Runtime: python3.7
+   FunctionName: lambda_function
+   CodeUri: ./src/lambda_function.py #Directory the source file is
+    KinesisFunction:
+  Type: AWS::Serverless::Function
+  Properties:
+   Handler: email_function.lambda_handler
+   Runtime: python3.7
+   FunctionName: email_function
+   CodeUri: ./src/email_function.py #Directory the source file is
