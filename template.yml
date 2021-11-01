@@ -9,14 +9,12 @@ Resources:
    Runtime: python3.7
    FunctionName: kinesis_function
    CodeUri: ./src/kinesis_function.py #Directory the source file is
-    KinesisFunction:
   Type: AWS::Serverless::Function
   Properties:
    Handler: lambda_function.lambda_handler
    Runtime: python3.7
    FunctionName: lambda_function
    CodeUri: ./src/lambda_function.py #Directory the source file is
-    KinesisFunction:
   Type: AWS::Serverless::Function
   Properties:
    Handler: email_function.lambda_handler
