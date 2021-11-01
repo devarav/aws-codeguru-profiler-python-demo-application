@@ -7,7 +7,7 @@ phases:
    commands:
    - echo Build started on `date`
    - sam build
-   - export BUCKET=test-pipeline-output-bucket
+   - export BUCKET=test-codepipeline-us-east-1-bucket
    - sam package --s3-bucket $BUCKET --output-template-file outputtemplate.yml
 artifacts:
  type: zip
