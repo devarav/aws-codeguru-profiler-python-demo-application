@@ -57,11 +57,15 @@ def check_prime(num):
 
 
 def sync_ddb_table(source_ddb, destination_ddb):
-    response = source_ddb.scan(TableName=“table1”)
+    response = source_ddb.scan(
+        TableName="table1"
+        )
     for item in response['Items']:
-        destination_ddb.put_item(TableName=“table2”, Item=item)
-        
-        
+        destination_ddb.put_item(
+            TableName="table2", Item=item
+            )
+
+
 def list_sns(region, creds, sns_topics=[]):
     sns = boto_session('sns', creds, region)
     response = sns.list_topics()
