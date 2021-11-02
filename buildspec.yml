@@ -9,6 +9,9 @@ phases:
    - sam build
    - export BUCKET=test-codepipeline-us-east-1-bucket
    - sam package --s3-bucket $BUCKET --output-template-file outputtemplate.yml
+ post_build:
+   commands:
+   - aws codeguru-reviewer create-code-review --name review_2021-10-13 --repository-association-arn arn:aws:codeguru-reviewer:us-east-1:180202748283:association:28ff5b00-4797-4621-8613-757ed950d5dd --type '{"RepositoryAnalysis": {"RepositoryHead": {"BranchName": "dev"}}}'
 artifacts:
  type: zip
  files:
