@@ -10,7 +10,7 @@ phases:
    - export BUCKET=test-codepipeline-us-east-1-bucket
    - sam package --s3-bucket $BUCKET --output-template-file outputtemplate.yml
    - export ARN=arn:aws:codeguru-reviewer:us-east-1:180202748283:association:28ff5b00-4797-4621-8613-757ed950d5dd
-   - aws codeguru-reviewer create-code-review --name full_repo --repository-association-arn $ARN --type '{"RepositoryAnalysis": {"RepositoryHead": {"BranchName": "dev"}}}'
+   - aws codeguru-reviewer create-code-review --name full_repo --repository-association-arn $ARN --type '{"RepositoryAnalysis":{"RepositoryHead":{"BranchName": "dev"}}}'
 artifacts:
  type: zip
  files:
