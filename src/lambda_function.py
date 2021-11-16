@@ -1,6 +1,8 @@
 import boto3
 import logging
 import os
+import numpy as np
+import pandas as pd
 
 from random import randrange
 from urllib.request import urlopen
@@ -54,3 +56,39 @@ def check_prime(num):
             return False
         sq_root += 1
     return True
+
+
+def sync_ddb_table(source_ddb, destination_ddb):
+    response = source_ddb.scan(
+        TableName="table1"
+        )
+    for item in response['Items']:
+        destination_ddb.put_item(
+            TableName="table2", Item=item
+            )
+
+
+def list_sns(region, creds, sns_topics=[]):
+    sns = boto_session('sns', creds, region)
+    response = sns.list_topics()
+    for topic_arn in response["Topics"]:
+        sns_topics.append(topic_arn["TopicArn"])
+    return sns_topics
+  
+def process():
+    for region, creds in jobs["auth_config"]:
+        arns = list_sns(region, creds)
+        
+def read_lines(file):
+    lines = []
+    f = open(file, ‘r’)
+    for line in f:
+        lines.append(line.strip(‘\n’).strip(‘\r\n’))
+    return lines
+    
+def execute(cmd):
+    try:
+        retcode = subprocess.call(cmd, shell=True)
+        ...
+    except OSError as e:
+        ...
